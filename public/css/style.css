@@ -1,0 +1,25 @@
+body {
+  background-color: #fff;
+  text-align: center;
+}
+
+#reddit_reader {
+  width: 750px;
+  min-height: 40px;
+  padding: 20px;
+  border: 1px dashed gray;
+  text-align: center;
+  margin: 10px;
+}
+
+#reddit_reader a {
+  text-decoration: none;
+}
+
+a.rr_title_link {
+  font-size: 140%;
+  color: blue;
+}
+
+a.rr_comments_link {
+}
