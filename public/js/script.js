@@ -8,6 +8,19 @@
         self.url = opts.url;
         self.target = opts.target;
         get_data(data_ready);
+        set_binds();
+      }
+
+      function set_binds () {
+        self.target.mouseover(function() {
+          self.paused = true;
+          self.target.css('background-color', '#fffff5');
+        });
+        
+        self.target.mouseout(function() {
+          self.paused = false;
+          self.target.css('background-color', 'transparent');
+        });
       }
 
       // create "get_data" method
@@ -28,8 +41,10 @@
       // the fade cycle "loop"
       function cycle_posts () {
         // advance the post we show
-        advance_post();
-        // wait 5000ms then do it again
+        if (!self.paused) {
+          advance_post();
+        }
+        // wait 7000ms then do it again
         setTimeout(cycle_posts, 7000);
       }
       
@@ -127,7 +142,6 @@
         });
       }
 
-      // create a method to process the remote data
       function process_remote_data (data) {
         // create an empty array where we'll store the posts data
         self.post_data = [];
