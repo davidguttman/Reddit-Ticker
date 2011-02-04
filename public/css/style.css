@@ -4,12 +4,13 @@ body {
 }
 
 #reddit_reader {
-  width: 750px;
+  width: 650px;
   min-height: 40px;
   padding: 20px;
   border: 1px dashed gray;
   text-align: center;
   margin: 10px;
+  position: relative;
 }
 
 #reddit_reader a {
@@ -21,5 +22,14 @@ a.rr_title_link {
   color: blue;
 }
 
-a.rr_comments_link {
+.rr_comments {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.rr_user {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
 }

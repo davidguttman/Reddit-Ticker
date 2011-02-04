@@ -29,8 +29,8 @@
       function cycle_posts () {
         // advance the post we show
         advance_post();
-        // wait 3000ms then do it again
-        setTimeout(cycle_posts, 5000);
+        // wait 5000ms then do it again
+        setTimeout(cycle_posts, 7000);
       }
       
       function advance_post () {
@@ -95,13 +95,25 @@
                 'class': 'rr_comments_link',
                 'text': '( '+post.num_comments+' comments )',
                 'target': '_blank'
+              }),
+              user_div = $('<div/>', {
+                'class': 'rr_user'
+              }),
+              user_link = $('<a/>', {
+                'href': 'http://reddit.com/user/'+post.user,
+                'class': 'rr_user_link',
+                'text': post.user,
+                'target': '_blank'
               });
+              
           
           title_div.append(title_link);
           comments_div.append(comments_link);
+          user_div.append('posted by ').append(user_link);
           
           post_element.append(title_div);
           post_element.append(comments_div);
+          post_element.append(user_div);
           
           post_element.hide();
           
@@ -121,6 +133,7 @@
         // and adding them to the array we just created
         
         $.each(data.data.children, function(i, remote_post) {
+          log("remote_post.data: ", remote_post.data);
           // create a temporary object
           var local_post = {};
           
@@ -129,6 +142,8 @@
           local_post.url = remote_post.data.url;
           local_post.comments_link = 'http://reddit.com' + remote_post.data.permalink;
           local_post.num_comments = remote_post.data.num_comments;
+          local_post.user = remote_post.data.author;
+          local_post.score = remote_post.score;
           
           // store that object in our post_data array
           self.post_data.push(local_post);
