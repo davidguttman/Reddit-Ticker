@@ -78,6 +78,7 @@
                 'class': 'rr_reddit_post',
                 'id': 'reddit_post_' + i
               }),
+              
               title_div = $('<div/>', {
                 'class': 'rr_title'
               }),
@@ -87,6 +88,7 @@
                 'text': post.title,
                 'target': '_blank'
               }),
+              
               comments_div = $('<div/>', {
                 'class': 'rr_comments'
               }),
@@ -96,6 +98,7 @@
                 'text': '( '+post.num_comments+' comments )',
                 'target': '_blank'
               }),
+              
               user_div = $('<div/>', {
                 'class': 'rr_user'
               }),
@@ -133,7 +136,6 @@
         // and adding them to the array we just created
         
         $.each(data.data.children, function(i, remote_post) {
-          log("remote_post.data: ", remote_post.data);
           // create a temporary object
           var local_post = {};
           
